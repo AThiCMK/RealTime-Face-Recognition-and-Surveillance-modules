@@ -1,0 +1,27 @@
+.QMenu {
+    background-color: #343a40; /* Dark background */
+    color: white; /* White text */
+    border: 4px solid #29323b; /* Border around the menu */
+    border-radius: 5px; /* Rounded corners */
+    font-size: 20px; /* Increased font size */
+    border-bottom: 2px solid white; /* Line between items */
+    padding: 5px 10px; /* Add some padding for better spacing */
+}
+
+/* Increase font size and adjust spacing for menu items */
+/* Increase font size and adjust spacing for menu items */
+#kebab-menu QMenu QAction {
+    font-size: 20px; /* Increased font size */
+    border-bottom: 1px solid #29323b; /* Line between items */
+    padding: 5px 10px; /* Add some padding for better spacing */
+}
+
+    /* Remove line from the last item */
+    #kebab-menu QMenu QAction:last-child {
+        border-bottom: none;
+    }
+
+    /* Change background color on hover */
+    #kebab-menu QMenu QAction:hover {
+        background-color: #454d55 !important; /* Hover background color (high priority) */
+    }
