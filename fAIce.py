@@ -28,6 +28,8 @@ class FaceRecognitionApp(QtWidgets.QMainWindow):
         
         self.BASE_DIR = os.path.dirname(os.path.abspath(__file__))
         self.root_folder = os.path.join(self.BASE_DIR, "ImagesAttendance")
+        if not os.path.exists(os.path.join(self.BASE_DIR, "ImagesAttendance")):
+            os.mkdir(self.root_folder)
         self.trespassers_folder = os.path.join(self.BASE_DIR, "trespassers")
         self.all_face_encodings = []
         self.all_face_names = []
@@ -77,7 +79,12 @@ class FaceRecognitionApp(QtWidgets.QMainWindow):
         self.layout.addWidget(self.student_dashboard)
         self.student_dashboard.hide()  # Hide by default
         
-        self.csv_file_path = "detections.csv"  # Path to your CSV file
+        self.csv_file_path = os.path.join(self.BASE_DIR, "detections.csv" ) # Path to your CSV file
+        if not os.path.exists(os.path.join(self.BASE_DIR, "detections.csv")):
+            with open(self.csv_file_path, mode='w', newline='') as csv_file:
+                fieldnames = ['Class Name', 'Date', 'Time']
+                writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+                writer.writeheader()
         self.csv_records_window = None
         self.setup_csv_records()
         
@@ -919,9 +926,6 @@ class webStreamApp(QtWidgets.QWidget):
             csv_file_path = "detections.csv"
             os.makedirs(self.trespassers_folder, exist_ok=True)
             with open(csv_file_path, mode='a', newline='') as csv_file:
-                fieldnames = ['Class Name', 'Date', 'Time']
-                writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
-                writer.writeheader()
                 while self.streaming:
                     ret, frame = self.video_capture.read()
                     if ret:
