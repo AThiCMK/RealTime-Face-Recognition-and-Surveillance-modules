@@ -804,10 +804,10 @@ class StudentDashboard(QtWidgets.QWidget):
 
         # Sample data for demonstration
         sample_data = [
-            ["222AD118", "Athi", "Hosteller"],
-            ["221CS280", "Ritthyk", "Hosteller"],
-            ["221CS314", "SivaRam", "Hosteller"],
-            ["222AD116", "Artha", "DayScholar"]
+            ["id_1", "Name_1", "Type_1"],
+            ["id_2", "Name_2", "Type_2"],
+            ["id_3", "Name_3", "Type_3"],
+            ["id_4", "Name_4", "Type_4"]
         ]
         self.table.setStyleSheet("""
         QTableWidget {
